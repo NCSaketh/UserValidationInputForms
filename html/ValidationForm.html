@@ -17,10 +17,12 @@
             <div>
                 <label for="pass">Enter Password: </label>
                 <input type="password" id="pass" name="pass" placeholder="Enter Password...">
+                <error-output class="pass-error" for="pass"></error-output>
             </div>
             <div>
                 <label for="email">Enter Email: </label>
                 <input type="email" id="email" name="email" placeholder="Enter Email...">
+                <error-output class="email-error" for="email"></error-output>
             </div>
             <div>
                 <label for="url">Enter URL: </label>
@@ -33,6 +35,7 @@
             <div>
                 <label for="tel">Enter Phone Number: </label>
                 <input type="tel" id="tel" name="tel" placeholder="Enter Phone Number...">
+                <error-output class="tel-error" for="tel"></error-output>
             </div>
             <div>
                 <label for="search">Enter Search Keyword: </label>
@@ -87,11 +90,22 @@
             const pass = document.querySelector('#pass');
             const passError = document.querySelector('.pass-error');
             pass.addEventListener('input', function() {
+                // Rule 1: Min length 8
                 let passRule1Regex = RegExp("^.{8,}$");
-                if(passRule1Regex.test(pass.value))
+                // Rule 2: Atleast 1 upper case
+                let passRule2Regex = RegExp("^.*[A-Z]+.*$");
+                // Rule 3: Atleast 1 number
+                let passRule3Regex = RegExp("^.*[0-9]+$");
+                // Rule 4: Exactly 1 special character
+                let passRule4Regex = RegExp("^\\w*[^\\w\\s]{1}\\w*$");
+
+                if(passRule1Regex.test(pass.value) &&
+                        passRule2Regex.test(pass.value) &&
+                        passRule3Regex.test(pass.value) &&
+                        passRule4Regex.test(pass.value))
                     passError.textContent = " ";
                 else
-                    passError.textContent = "Min Length 8!";
+                    passError.textContent = "Incorrect Password entered!";
             });
             
             const salary = document.querySelector('#salary');
