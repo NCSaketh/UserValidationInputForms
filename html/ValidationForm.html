@@ -83,6 +83,16 @@ const text = document.querySelector('#text');
                 else
                     phoneError.textContent="Phone number is invalid";
             });
+
+            const pass = document.querySelector('#pass');
+            const passError = document.querySelector('.pass-error');
+            pass.addEventListener('input', function() {
+                let passRule1Regex = RegExp("^.{8,}$");
+                if(passRule1Regex.test(pass.value))
+                    passError.textContent = " ";
+                else
+                    passError.textContent = "Min Length 8!";
+            });
             
             const salary = document.querySelector('#salary');
             const output = document.querySelector(".salary-output");
@@ -90,6 +100,7 @@ const text = document.querySelector('#text');
             salary.addEventListener('input',function(){
                 output.textContent = salary.value;
             });
+
             
         </script>
     </body>
