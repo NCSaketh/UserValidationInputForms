@@ -84,14 +84,14 @@
                     phoneError.textContent="Phone number is invalid";
             });
 
-            const password = document.getElementById("pwd");
-            const passwordError = document.querySelector(".pwd-error");
-            password.addEventListener("input",function(){
-                let passwordRegex = RegExp(".{8,}");
-                if(passwordRegex.test(password.value))
-                    passwordError.textContent = "";
-                else 
-                    passwordError.textContent = "Invalid Password"
+            const pass = document.querySelector('#pass');
+            const passError = document.querySelector('.pass-error');
+            pass.addEventListener('input', function() {
+                let passRule1Regex = RegExp("^.{8,}$");
+                if(passRule1Regex.test(pass.value))
+                    passError.textContent = " ";
+                else
+                    passError.textContent = "Min Length 8!";
             });
             
             const salary = document.querySelector('#salary');
@@ -100,7 +100,7 @@
             salary.addEventListener('input',function(){
                 output.textContent = salary.value;
             });
-            
+
         </script>
     </body>
 </html>
